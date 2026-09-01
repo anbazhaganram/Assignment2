@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,50 +13,51 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: #f2f2f2;
+            background: #f1f1f1;
             font-family: Arial, sans-serif;
         }
 
         .login-box {
             width: 320px;
-            padding: 30px;
             background: white;
+            padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            text-align: center;
         }
 
         h2 {
+            text-align: center;
             margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            margin-bottom: 5px;
         }
 
         input {
             width: 100%;
             padding: 12px;
-            margin: 8px 0;
+            box-sizing: border-box;
             border: 1px solid #ccc;
             border-radius: 5px;
-            box-sizing: border-box;
         }
 
         button {
             width: 100%;
             padding: 12px;
-            margin-top: 15px;
-            border: none;
+            margin-top: 20px;
+            border: 0;
             border-radius: 5px;
             background: #333;
             color: white;
             cursor: pointer;
         }
 
-        button:hover {
-            background: #555;
-        }
-
         #message {
+            text-align: center;
             margin-top: 15px;
-            font-weight: bold;
         }
     </style>
 </head>
@@ -63,21 +65,33 @@
 <body>
 
     <div class="login-box">
+
         <h2>LOGIN</h2>
 
-        <input type="text" id="username" placeholder="USERNAME">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter username">
 
-        <input type="password" id="password" placeholder="PASSWORD">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter password">
 
-        <button onclick="login()">LOGIN</button>
+        <button onclick="login()">Login</button>
 
-        <div id="message"></div>
+        <p id="message"></p>
+
     </div>
 
     <script>
         function login() {
+            const username = document.getElementById("username").value;
+
+            if (username.trim() === "") {
+                document.getElementById("message").textContent =
+                    "Please enter a username.";
+                return;
+            }
+
             document.getElementById("message").textContent =
-                "Demo login only — no credentials are stored.";
+                "Demo login — no credentials are stored or transmitted.";
         }
     </script>
 
